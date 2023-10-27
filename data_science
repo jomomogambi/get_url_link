@@ -1,0 +1,27 @@
+import pickle
+
+# Load the saved model
+with open("accident_severity_model.pkl", "rb") as file:
+    model = pickle.load(file)
+
+# Create a hypothetical set of independent variables
+independent_variables = {
+    "road_type": "highway",
+    "speed_limit": 100,
+    "weather_conditions": "clear",
+    "time_of_day": "daytime",
+    "day_of_week": "weekday",
+    "alcohol_involvement": False,
+    "driver_fatigue": False,
+    "vehicle_type": "car",
+    "number_of_vehicles": 2,
+    "road_surface_condition": "dry",
+    "presence_of_traffic_signals": True,
+    "geometric_design": "straight"
+}
+
+# Predict the accident severity
+predicted_severity = model.predict(independent_variables)
+
+# Print the predicted severity
+print(predicted_severity)
